@@ -31,15 +31,15 @@ if os == "mac" || os == "linux"
 endif
 
 if os == "win"
-	set rtp+=~/Dotfiles/bundle/vundle/
-	let path='~/Dotfiles/bundle'
+	set rtp+=~/Dotvim/bundle/vundle/
+	let path='~/Dotvim/bundle'
 	call vundle#rc(path)
 endif
 "}}}
 "
 "" source vundle plugis
 if os == "win"
-	source ~/Dotfiles/bundles.vim
+	source ~/Dotvim/bundles.vim
 else
 	source ~/.vim/bundles.vim
 endif
@@ -74,7 +74,7 @@ nmap <leader>v <c-v>
 set fenc=utf-8
 set termencoding=utf-8
 set fileencodings=utf-8
-set encoding=utf-8  "if not set, the powerline plugins won't work 
+set encoding=utf-8  "if not set, the powerline plugins won't work
 if os == "win"
     set fileencoding=chinese
 endif
@@ -358,7 +358,7 @@ if !has("win32")
         let Libs   = "-lopencv_core -lopencv_highgui -lopencv_imgproc"
         exec "w"
         exec "lcd %:p:h"
-        exec "r !g++ -I" . IncDir . " -L" . LibDir . " *.cpp " . Libs . " -o %< " 
+        exec "r !g++ -I" . IncDir . " -L" . LibDir . " *.cpp " . Libs . " -o %< "
         echo "compile finished!"
         exec "!./%<"
     endfunction
@@ -395,7 +395,7 @@ if !has("win32")
 endif
 
 if has("win32") || has("win64")
-    nmap <leader>rr :<C-U>!clang++ -std=c++11 -stdlib=libc++ 
+    nmap <leader>rr :<C-U>!clang++ -std=c++11 -stdlib=libc++
                 \ -IC:/MinGW/include
                 \ -IC:/MinGW/lib
                 \ -IC:/MinGW/lib/gcc/mingw32/4.6.2/include/c++
@@ -406,7 +406,7 @@ endif
 if has("win32") || has("win64")
     " fix cygwin shell redirection
     set shellredir=>\"%s\"\ 2>&1
-endif    
+endif
 
 "}}}
 
@@ -483,7 +483,7 @@ vnoremap <Space> za
 nnoremap ,z zMzv
 "}}}
 
-"configure for UltiSnips plugin {{{ 
+"configure for UltiSnips plugin {{{
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
@@ -500,9 +500,9 @@ nmap <leader>vv :tabedit $MYVIMRC<CR>
 
 "keymaps for c/c++ development{{{
 " Reparse the current translation unit in background
-command! Parse  call g:ClangBackgroundParse()  
+command! Parse  call g:ClangBackgroundParse()
 " Reparse the current translation unit and check for errors
-command! ClangCheck call g:ClangUpdateQuickFix()  
+command! ClangCheck call g:ClangUpdateQuickFix()
 
 " Set the most common used run command
 if has('win32') || has('win64') || has('os2')
@@ -513,20 +513,20 @@ endif
 
 " SingleCompile for C++ with Clang
 function! s:LoadSingleCompileOptions()
-    call SingleCompile#SetCompilerTemplate('c', 
-                \'clang', 
-                \'the Clang C and Objective-C compiler', 
-                \'clang', 
-                \'-o $(FILE_TITLE)$ ' . g:single_compile_options, 
+    call SingleCompile#SetCompilerTemplate('c',
+                \'clang',
+                \'the Clang C and Objective-C compiler',
+                \'clang',
+                \'-o $(FILE_TITLE)$ ' . g:single_compile_options,
                 \g:common_run_command)
 
     call SingleCompile#ChooseCompiler('c', 'clang')
 
-    call SingleCompile#SetCompilerTemplate('cpp', 
-                \'clang', 
-                \'the Clang C and Objective-C compiler', 
-                \'clang++', 
-                \'-o $(FILE_TITLE)$ ' . g:single_compile_options, 
+    call SingleCompile#SetCompilerTemplate('cpp',
+                \'clang',
+                \'the Clang C and Objective-C compiler',
+                \'clang++',
+                \'-o $(FILE_TITLE)$ ' . g:single_compile_options,
                 \g:common_run_command)
     call SingleCompile#ChooseCompiler('cpp', 'clang')
 endfunction
@@ -560,7 +560,7 @@ inoremap <C-t>     <Esc> :tabnew<CR>
 "configs for vimwiki"{{{
 "I don't use vimwiki anymore. Now I am using emacs org-mode to manage my personal life
 "nmap <leader>5 :VimwikiAll2HTML<cr>
-"let g:vimwiki_list = [{'path':  '/Users/guanghui/workspace/myblog/octopress/source/vimwiki/',  
+"let g:vimwiki_list = [{'path':  '/Users/guanghui/workspace/myblog/octopress/source/vimwiki/',
 "            \ 'path_html': '/Users/guanghui/workspace/myblog/octopress/source/vimwiki_html/'}]
 "}}}
 
@@ -587,7 +587,7 @@ au FileType cpp let b:delimitMate_matchpairs = "(:),[:],{:}"
 "mappings for latex-box plugin{{{
 map <silent> <Leader>ls :silent !/Applications/Skim.app/Contents/SharedSupport/displayline
             \ <C-R>=line('.')<CR> "<C-R>=LatexBox_GetOutputFile()<CR>" "%:p" <CR>
-autocmd filetype tex nnoremap F10 :!latexmk -pdf % 
+autocmd filetype tex nnoremap F10 :!latexmk -pdf %
 "}}}
 
 "some keymapings for tidying your whitespace{{{
