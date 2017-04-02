@@ -88,7 +88,20 @@ set relativenumber
 set t_Co=256
 
 " set GUI font for powerline
-set guifont=Roboto\ Mono\ for\ Powerline
+if os == "mac" || os == "linux"
+    set guifont=Roboto\ Mono\ for\ Powerline
+else
+    if has('gui_running')
+      set guioptions-=T  " no toolbar
+      colorscheme  solarized
+      set lines=60 columns=108 linespace=0
+      if has('gui_win32')
+        set guifont=Ubuntu_Mono:h14:cANSI
+      else
+        set guifont=Ubuntu\ Mono\ 14
+      endif
+    endif
+endif
 
 " set relativenumber
 set number
