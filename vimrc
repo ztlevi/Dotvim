@@ -585,11 +585,11 @@ nnoremap <leader>ha <Esc>:call ToggleHardMode()<CR>
 "emacs keymaping for insert mode cursor movement{{{
 nmap <c-a> ^ 
 nmap <c-e> $
+inoremap <c-d> <del>
 inoremap <c-a> <esc>I
 inoremap <c-e> <esc>A
 inoremap <c-f> <right>
 inoremap <c-b> <left>
-" inoremap <C-d> <Esc>lxi
 inoremap <c-p> <up>
 inoremap <c-n> <down>
 "}}}
